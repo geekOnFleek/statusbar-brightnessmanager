@@ -31,7 +31,7 @@ int main()
 	key_t key;
 	int msgid;
 	
-	key = ftok("progfile", 65);
+	key = ftok("/home/jan/.uscripts/brghtservice/brightness-daemon.c", 65);
 	
 	msgid = msgget(key, 0666 | IPC_CREAT);
 	int i = 1;
@@ -46,14 +46,14 @@ int main()
 	
 	while(i){
 		msgrcv(msgid, &message, sizeof(message), 1, 0);
-		printf("%d\n", strncmp(message.mesg_text, "EXT", 3));
+		//printf("%d\n", strncmp(message.mesg_text, "EXT", 3));
 		if(strncmp(message.mesg_text, "EXT", 3) == 0)
 			i = 0;
 		if(strncmp(message.mesg_text, "UP", 2) == 0)
 			write_brightness(brght + 7);
 		if(strncmp(message.mesg_text, "DWN", 3) == 0)
 			write_brightness(brght - 7);	
-		printf("Data Received is: %s \n", message.mesg_text);
+		//printf("Data Received is: %s \n", message.mesg_text);
 	}
 	msgctl(msgid, IPC_RMID, NULL);
 
