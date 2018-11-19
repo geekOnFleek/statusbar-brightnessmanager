@@ -31,7 +31,7 @@ int main()
 	key_t key;
 	int msgid;
 	
-	key = ftok("/home/jan/.uscripts/brghtservice/brightness-daemon.c", 65);
+	key = ftok("/home/jan/.uscripts/brghtservice/brightness-daemon.c", 66);
 	
 	msgid = msgget(key, 0666 | IPC_CREAT);
 	int i = 1;
