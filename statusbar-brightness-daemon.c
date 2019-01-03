@@ -31,18 +31,18 @@ int main()
 	key_t key;
 	int msgid;
 	
-	key = ftok("/home/jan/.uscripts/brghtservice/brightness-daemon.c", 66);
+	key = ftok("/home/jan/documents/code/statusbar-brightnessmanager", 66);
 	
 	msgid = msgget(key, 0666 | IPC_CREAT);
 	int i = 1;
 	
-	printf("Accessing file");
+	//printf("Accessing file");
 	FILE *f = fopen(brightness_path, "r");
 	if(f == NULL)
 		printf("Nullpointer\n");
 	fscanf(f, "%i", &brght);
 	fclose(f);
-	printf("%d\n", brght);
+	//printf("%d\n", brght);
 	
 	while(i){
 		msgrcv(msgid, &message, sizeof(message), 1, 0);
