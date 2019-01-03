@@ -31,7 +31,7 @@ int main()
 	key_t key;
 	int msgid;
 	
-	key = ftok("/home/jan/documents/code/statusbar-brightnessmanager", 66);
+	key = ftok("/home/jan/documents/code/statusbar-brightnessmanager/statusbar-brightness-daemon.c", 66);
 	
 	msgid = msgget(key, 0666 | IPC_CREAT);
 	int i = 1;

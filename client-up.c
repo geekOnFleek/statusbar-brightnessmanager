@@ -13,7 +13,7 @@ int main()
 	key_t key;
 	int msgid;
 	//ftok to generate unique key
-	key = ftok("/home/jan/.uscripts/brightservice/statusbar-brightnessmanager", 66);
+	key = ftok("/home/jan/documents/code/statusbar-brightnessmanager/statusbar-brightness-daemon.c", 66);
 	
 	msgid = msgget(key, 0666 | IPC_CREAT);
 	message.mesg_type = 1;
